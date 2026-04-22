@@ -10,16 +10,19 @@ hero_slides:
     subheading: "CPS can work with you managing every aspect of your project from initial analysis to final installation."
     cta_label: "Learn More"
     cta_url: "/the-company/"
+    background: "/assets/images/hero-complete-project.jpg"
 
   - heading: "We Design Your Machine"
     subheading: "CPS design services can provide feasibility analysis, floor layout, turnkey solutions & special needs bespoke design."
     cta_label: "Learn More"
     cta_url: "/our-services/design-services/"
+    background: "/assets/images/hero-design.jpg"
 
   - heading: "Customers Around the Globe"
     subheading: "We provide creative solutions to material handling & production processes across the globe."
     cta_label: "Learn More"
     cta_url: "/clients/our-clients/"
+    background: "/assets/images/hero-global.jpg"
 
 # Featured Products
 featured_products:

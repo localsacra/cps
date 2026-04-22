@@ -5,7 +5,7 @@ layout: default
 <!-- Hero Slider -->
 <section class="hero-slider" id="heroSlider">
   {% for slide in page.hero_slides %}
-  <div class="hero-slide">
+  <div class="hero-slide" style="background-image: url('{{ slide.background }}')">
     <div class="hero-content">
       <h1>{{ slide.heading }}</h1>
       <p>{{ slide.subheading }}</p>
