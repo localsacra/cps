@@ -1,23 +1,143 @@
----
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }}</title>
-  {% if page.description %}
-  <meta name="description" content="{{ page.description }}">
-  {% endif %}
-  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  {% include navigation.html %}
-  
-  <main class="page-content">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div class="site-header__logo">
+        <a href="{{ '/' | relative_url }}">
+          <img src="{{ '/assets/images/CPS_logo.png' | relative_url }}" alt="CPS Logo">
+        </a>
+      </div>
+      <div class="site-header__social">
+        <a href="https://www.youtube.com/user/CPSIreland" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://twitter.com/CPSIreland" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/pages/CPS-Conveyors-Packaging-Services-Ltd" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.linkedin.com/company/cps-ltd-conveyors" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav class="nav-bar">
+    <div class="nav-bar__inner">
+      <ul class="nav-bar__menu">
+
+        <li class="nav-bar__item">
+          <a href="{{ '/' | relative_url }}">Home</a>
+        </li>
+
+        <li class="nav-bar__item has-dropdown">
+          <a href="#">Our Services</a>
+          <ul class="nav-bar__dropdown">
+            <li><a href="{{ '/our-services/design-services/' | relative_url }}">Design Services</a></li>
+            <li><a href="{{ '/our-services/turnkey-solutions/' | relative_url }}">Turnkey Solutions</a></li>
+            <li><a href="{{ '/our-services/control-systems/' | relative_url }}">Control Systems</a></li>
+            <li><a href="{{ '/our-services/manufacturing/' | relative_url }}">Manufacturing</a></li>
+            <li><a href="{{ '/our-services/assembly/' | relative_url }}">Assembly</a></li>
+            <li><a href="{{ '/our-services/reverse-engineering/' | relative_url }}">Reverse Engineering</a></li>
+            <li><a href="{{ '/our-services/validation-documentation/' | relative_url }}">Validation Documentation</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-bar__item has-dropdown">
+          <a href="#">Our Products</a>
+          <ul class="nav-bar__dropdown">
+            <li><a href="{{ '/our-products/automation-robotics/' | relative_url }}">Automation &amp; Robotics</a></li>
+            <li><a href="{{ '/our-products/conveyors/' | relative_url }}">Conveyors</a></li>
+            <li><a href="{{ '/our-products/special-purpose-machinery/' | relative_url }}">Special Purpose Machinery</a></li>
+            <li><a href="{{ '/our-products/medical-device-equipment/' | relative_url }}">Medical Device Equipment</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-bar__item has-dropdown">
+          <a href="#">Quality</a>
+          <ul class="nav-bar__dropdown">
+            <li><a href="{{ '/quality/quality-standards/' | relative_url }}">Quality Standards</a></li>
+            <li><a href="{{ '/quality/awards/' | relative_url }}">Awards &amp; Certifications</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-bar__item has-dropdown">
+          <a href="#">Clients</a>
+          <ul class="nav-bar__dropdown">
+            <li><a href="{{ '/clients/our-clients/' | relative_url }}">Our Clients</a></li>
+            <li><a href="{{ '/clients/our-industries/' | relative_url }}">Our Industries</a></li>
+            <li><a href="{{ '/clients/testimonials/' | relative_url }}">Testimonials</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-bar__item has-dropdown">
+          <a href="#">About Us</a>
+          <ul class="nav-bar__dropdown">
+            <li><a href="{{ '/the-company/' | relative_url }}">The Company</a></li>
+            <li><a href="{{ '/gallery/' | relative_url }}">Gallery</a></li>
+            <li><a href="{{ '/factory-tour/' | relative_url }}">Factory Tour</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-bar__item">
+          <a href="{{ '/contact-us/' | relative_url }}">Contact Us</a>
+        </li>
+
+      </ul>
+      <div class="nav-bar__search">
+        <input type="text" placeholder="Search">
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE CONTENT -->
+  <main>
     {{ content }}
   </main>
 
-  {% include footer.html %}
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__col">
+        <h4>Contact Ireland</h4>
+        <p>CPS, IDA Industrial Estate<br>
+           Dunmore Road, Tuam<br>
+           Co. Galway, H54 WR91, Ireland</p>
+        <p>Tel: <a href="tel:+35393238000">+353 (0)93 238 00</a></p>
+        <p>Email: <a href="mailto:info@cps.ie">info@cps.ie</a></p>
+      </div>
+      <div class="site-footer__col">
+        <h4>Follow Us</h4>
+        <div class="footer-social">
+          <a href="https://www.youtube.com/user/CPSIreland" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+          <a href="https://twitter.com/CPSIreland" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+          <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+        </div>
+      </div>
+      <div class="site-footer__col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="{{ '/our-services/' | relative_url }}">Our Services</a></li>
+          <li><a href="{{ '/our-products/' | relative_url }}">Our Products</a></li>
+          <li><a href="{{ '/quality/' | relative_url }}">Quality</a></li>
+          <li><a href="{{ '/contact-us/' | relative_url }}">Contact Us</a></li>
+          <li><a href="{{ '/privacy-policy/' | relative_url }}">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <p>&copy; {{ 'now' | date: "%Y" }} CPS Ltd. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="{{ '/assets/js/navigation.js' | relative_url }}"></script>
+
 </body>
 </html>
