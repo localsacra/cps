@@ -1,0 +1,138 @@
+---
+layout: default
+---
+
+<!-- Hero Slider -->
+<section class="hero-slider" id="heroSlider">
+  {% for slide in page.hero_slides %}
+  <div class="hero-slide">
+    <div class="hero-content">
+      <h1>{{ slide.heading }}</h1>
+      <p>{{ slide.subheading }}</p>
+      <a href="{{ slide.cta_url }}" class="btn btn--primary">{{ slide.cta_label }}</a>
+    </div>
+  </div>
+  {% endfor %}
+  <button class="hero-arrow hero-arrow--prev" aria-label="Previous slide">❮</button>
+  <button class="hero-arrow hero-arrow--next" aria-label="Next slide">❯</button>
+</section>
+
+<!-- Featured Products -->
+<section class="featured-products">
+  <div class="container">
+    <h2 class="section-title">Featured Products</h2>
+    <div class="product-grid">
+      {% for product in page.featured_products %}
+      <div class="product-card">
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.excerpt }}</p>
+        <a href="{{ product.url }}" class="btn btn--outline">{{ product.cta }}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Featured Services -->
+<section class="featured-services">
+  <div class="container">
+    <h2 class="section-title">Featured Services</h2>
+    <div class="services-grid">
+      {% for service in page.featured_services %}
+      <div class="service-card">
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.excerpt }}</p>
+        <a href="{{ service.url }}" class="btn btn--text">Learn More →</a>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="services-cta">
+      <a href="/our-services/" class="btn btn--primary">All Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- News Preview -->
+<section class="news-preview">
+  <div class="container">
+    <h2 class="section-title">News & Events</h2>
+    <div class="news-grid">
+      {% assign recent_posts = site.posts | limit: 2 %}
+      {% for post in recent_posts %}
+      <div class="news-card">
+        <span class="news-date">{{ post.date | date: "%d %b %Y" }}</span>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt | truncate: 150 }}</p>
+        <a href="{{ post.url }}" class="btn btn--text">Read More →</a>
+      </div>
+      {% endfor %}
+    </div>
+    <a href="/news/" class="btn btn--outline">View All News</a>
+  </div>
+</section>
+
+<!-- Contact Strip -->
+<section class="contact-strip">
+  <div class="container">
+    <div class="contact-strip__details">
+      <h3>Contact Ireland</h3>
+      <p>CPS, IDA Industrial Estate, Dunmore Road, Tuam, Co. Galway, H54 WR91, Ireland</p>
+      <p>Tel: <a href="tel:+35393238000">+353 (0)93 238 00</a></p>
+      <p>Email: <a href="mailto:info@cps.ie">info@cps.ie</a></p>
+    </div>
+    <div class="contact-strip__cta">
+      <a href="/contact-us/" class="btn btn--primary btn--large">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Hero slider carousel functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById('heroSlider');
+    if (slider) {
+      let currentSlide = 0;
+      const slides = slider.querySelectorAll('.hero-slide');
+      const totalSlides = slides.length;
+      
+      if (totalSlides === 0) return;
+      
+      function showSlide(n) {
+        // Hide all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        
+        // Wrap around
+        if (n >= totalSlides) currentSlide = 0;
+        if (n < 0) currentSlide = totalSlides - 1;
+        
+        // Show current slide
+        if (slides[currentSlide]) {
+          slides[currentSlide].classList.add('active');
+        }
+      }
+      
+      function nextSlide() {
+        currentSlide++;
+        showSlide(currentSlide);
+      }
+      
+      function prevSlide() {
+        currentSlide--;
+        showSlide(currentSlide);
+      }
+      
+      // Event listeners for buttons
+      const nextBtn = slider.querySelector('.hero-arrow--next');
+      const prevBtn = slider.querySelector('.hero-arrow--prev');
+      
+      if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+      if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+      
+      // Initialize - show first slide
+      showSlide(currentSlide);
+      
+      // Auto-rotate slides every 6 seconds
+      setInterval(nextSlide, 6000);
+    }
+  });
+</script>

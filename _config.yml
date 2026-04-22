@@ -1,0 +1,55 @@
+﻿title: "CPS – Complete Automation Solutions"
+description: "Ireland's leading manufacturer of conveyor systems and automation solutions for MedTech and Pharmaceutical industries since 1994."
+url: "https://localsacra.github.io"
+baseurl: "/cps"
+
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
+minimal_mistakes_skin: "dark"
+
+author:
+  name: "CPS Ltd"
+  location: "Tuam, Co. Galway, Ireland"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-include-cache
+  - jekyll-remote-theme
+
+collections:
+  services:
+    output: true
+    permalink: /our-services/:name/
+  products:
+    output: true
+    permalink: /our-products/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "services"
+    values:
+      layout: "service"
+  - scope:
+      path: ""
+      type: "products"
+    values:
+      layout: "product"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "single"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "single"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor

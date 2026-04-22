@@ -1,0 +1,54 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+</head>
+<body>
+  {% include navigation.html %}
+  
+  <main class="page-content">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="{{ "/" | relative_url }}">Home</a>
+        <span class="breadcrumbs__separator">/</span>
+        <a href="{{ "/products/" | relative_url }}">Products</a>
+        <span class="breadcrumbs__separator">/</span>
+        <span>{{ page.title }}</span>
+      </div>
+
+      <article class="product-detail">
+        <header class="hero-label">{{ page.title }}</header>
+        
+        {% if page.image %}
+        <figure class="product-image">
+          <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+        </figure>
+        {% endif %}
+
+        <div class="product-content">
+          {{ content }}
+        </div>
+
+        {% if page.specifications %}
+        <section class="product-specs">
+          <h2>Specifications</h2>
+          {{ page.specifications | markdownify }}
+        </section>
+        {% endif %}
+
+        <div class="product-actions">
+          <a href="#contact" class="btn btn--accent">Request Information</a>
+          <a href="{{ "/products/" | relative_url }}" class="btn btn--secondary">Back to Products</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  {% include footer.html %}
+</body>
+</html>

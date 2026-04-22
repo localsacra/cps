@@ -1,0 +1,42 @@
+<nav class="nav-bar">
+  <div class="nav-bar__inner">
+    <div class="nav-bar__logo">
+      <a href="{{ "/" | relative_url }}" class="site-logo">
+        CPS Industrial Solutions
+      </a>
+    </div>
+    
+    <ul class="nav-bar__menu">
+      <li class="nav-bar__item">
+        <a href="{{ "/" | relative_url }}">Home</a>
+      </li>
+      <li class="nav-bar__item">
+        <a href="{{ "/products/" | relative_url }}">Products</a>
+        {% if site.products.size > 0 %}
+        <ul class="nav-bar__dropdown">
+          {% for product in site.products %}
+          <li><a href="{{ product.url | relative_url }}">{{ product.title }}</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </li>
+      <li class="nav-bar__item">
+        <a href="{{ "/services/" | relative_url }}">Services</a>
+        {% if site.services.size > 0 %}
+        <ul class="nav-bar__dropdown">
+          {% for service in site.services %}
+          <li><a href="{{ service.url | relative_url }}">{{ service.title }}</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </li>
+      <li class="nav-bar__item">
+        <a href="#contact">Contact</a>
+      </li>
+    </ul>
+    
+    <div class="nav-bar__search">
+      <input type="search" placeholder="Search...">
+    </div>
+  </div>
+</nav>

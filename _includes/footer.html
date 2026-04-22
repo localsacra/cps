@@ -1,0 +1,37 @@
+<footer class="footer">
+  <div class="footer__wrapper">
+    <section class="footer__section">
+      <h4>About CPS</h4>
+      <p>Leading provider of industrial automation and conveyor systems for modern manufacturing.</p>
+    </section>
+    
+    <section class="footer__section">
+      <h4>Products</h4>
+      <ul>
+        {% for product in site.products %}
+        <li><a href="{{ product.url | relative_url }}">{{ product.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+    
+    <section class="footer__section">
+      <h4>Services</h4>
+      <ul>
+        {% for service in site.services %}
+        <li><a href="{{ service.url | relative_url }}">{{ service.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+    
+    <section class="footer__section">
+      <h4>Contact</h4>
+      <p>Email: info@cpsindustrial.com</p>
+      <p>Phone: +1 (555) 123-4567</p>
+      <p>Hours: Mon-Fri, 8 AM - 6 PM</p>
+    </section>
+  </div>
+  
+  <div class="footer__bottom">
+    <p>&copy; {% assign current_year = site.time | date: '%Y' %}{{ current_year }} CPS Industrial Solutions. All rights reserved.</p>
+  </div>
+</footer>

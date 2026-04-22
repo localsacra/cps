@@ -1,0 +1,52 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+</head>
+<body>
+  {% include navigation.html %}
+  
+  <main class="page-content">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="{{ "/" | relative_url }}">Home</a>
+        <span class="breadcrumbs__separator">/</span>
+        <a href="{{ "/services/" | relative_url }}">Services</a>
+        <span class="breadcrumbs__separator">/</span>
+        <span>{{ page.title }}</span>
+      </div>
+
+      <article class="service-detail">
+        <header class="hero-label">{{ page.title }}</header>
+        
+        <div class="service-content">
+          {{ content }}
+        </div>
+
+        {% if page.benefits %}
+        <section class="service-benefits">
+          <h2>Key Benefits</h2>
+          <ul>
+            {% for benefit in page.benefits %}
+            <li>{{ benefit }}</li>
+            {% endfor %}
+          </ul>
+        </section>
+        {% endif %}
+
+        <div class="service-actions">
+          <a href="#contact" class="btn btn--accent">Get Started</a>
+          <a href="{{ "/services/" | relative_url }}" class="btn btn--secondary">Back to Services</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  {% include footer.html %}
+</body>
+</html>
