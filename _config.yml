@@ -6,6 +6,12 @@ baseurl: "/cps"
 remote_theme: "mmistakes/minimal-mistakes@4.26.2"
 minimal_mistakes_skin: "dark"
 
+# Disable default masthead title
+masthead_title: " "
+
+# Logo
+logo: "/cps/assets/images/cps-logo.png"
+
 author:
   name: "CPS Ltd"
   location: "Tuam, Co. Galway, Ireland"
